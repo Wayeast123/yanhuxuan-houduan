@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xinYuan.model.dao.VerifyMaterialMapper">
+  <resultMap id="BaseResultMap" type="com.xinYuan.model.pojo.VerifyMaterial">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="user_name" jdbcType="VARCHAR" property="userName" />
+    <result column="sex" jdbcType="VARCHAR" property="sex" />
+    <result column="age" jdbcType="INTEGER" property="age" />
+    <result column="hometown" jdbcType="VARCHAR" property="hometown" />
+    <result column="id_card_number" jdbcType="VARCHAR" property="idCardNumber" />
+    <result column="telephone" jdbcType="VARCHAR" property="telephone" />
+    <result column="verify_identity" jdbcType="INTEGER" property="verifyIdentity" />
+    <result column="id_card_front" jdbcType="VARCHAR" property="idCardFront" />
+    <result column="id_card_back" jdbcType="VARCHAR" property="idCardBack" />
+    <result column="certificate" jdbcType="VARCHAR" property="certificate" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, user_id, user_name, sex, age, hometown, id_card_number, telephone, verify_identity, 
+    id_card_front, id_card_back, certificate, status, create_time, update_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from xinyuan_verify_material
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from xinyuan_verify_material
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.xinYuan.model.pojo.VerifyMaterial">
+    insert into xinyuan_verify_material (id, user_id, user_name, 
+      sex, age, hometown, 
+      id_card_number, telephone, verify_identity, 
+      id_card_front, id_card_back, certificate
+      )
+    values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{userName,jdbcType=VARCHAR}, 
+      #{sex,jdbcType=VARCHAR}, #{age,jdbcType=INTEGER}, #{hometown,jdbcType=VARCHAR}, 
+      #{idCardNumber,jdbcType=VARCHAR}, #{telephone,jdbcType=VARCHAR}, #{verifyIdentity,jdbcType=INTEGER}, 
+      #{idCardFront,jdbcType=VARCHAR}, #{idCardBack,jdbcType=VARCHAR}, #{certificate,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.xinYuan.model.pojo.VerifyMaterial">
+    insert into xinyuan_verify_material
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="userName != null">
+        user_name,
+      </if>
+      <if test="sex != null">
+        sex,
+      </if>
+      <if test="age != null">
+        age,
+      </if>
+      <if test="hometown != null">
+        hometown,
+      </if>
+      <if test="idCardNumber != null">
+        id_card_number,
+      </if>
+      <if test="telephone != null">
+        telephone,
+      </if>
+      <if test="verifyIdentity != null">
+        verify_identity,
+      </if>
+      <if test="idCardFront != null">
+        id_card_front,
+      </if>
+      <if test="idCardBack != null">
+        id_card_back,
+      </if>
+      <if test="certificate != null">
+        certificate,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="userName != null">
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="age != null">
+        #{age,jdbcType=INTEGER},
+      </if>
+      <if test="hometown != null">
+        #{hometown,jdbcType=VARCHAR},
+      </if>
+      <if test="idCardNumber != null">
+        #{idCardNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="telephone != null">
+        #{telephone,jdbcType=VARCHAR},
+      </if>
+      <if test="verifyIdentity != null">
+        #{verifyIdentity,jdbcType=INTEGER},
+      </if>
+      <if test="idCardFront != null">
+        #{idCardFront,jdbcType=VARCHAR},
+      </if>
+      <if test="idCardBack != null">
+        #{idCardBack,jdbcType=VARCHAR},
+      </if>
+      <if test="certificate != null">
+        #{certificate,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xinYuan.model.pojo.VerifyMaterial">
+    update xinyuan_verify_material
+    <set>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="userName != null">
+        user_name = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        sex = #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="age != null">
+        age = #{age,jdbcType=INTEGER},
+      </if>
+      <if test="hometown != null">
+        hometown = #{hometown,jdbcType=VARCHAR},
+      </if>
+      <if test="idCardNumber != null">
+        id_card_number = #{idCardNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="telephone != null">
+        telephone = #{telephone,jdbcType=VARCHAR},
+      </if>
+      <if test="verifyIdentity != null">
+        verify_identity = #{verifyIdentity,jdbcType=INTEGER},
+      </if>
+      <if test="idCardFront != null">
+        id_card_front = #{idCardFront,jdbcType=VARCHAR},
+      </if>
+      <if test="idCardBack != null">
+        id_card_back = #{idCardBack,jdbcType=VARCHAR},
+      </if>
+      <if test="certificate != null">
+        certificate = #{certificate,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xinYuan.model.pojo.VerifyMaterial">
+    update xinyuan_verify_material
+    set user_id = #{userId,jdbcType=INTEGER},
+      user_name = #{userName,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=VARCHAR},
+      age = #{age,jdbcType=INTEGER},
+      hometown = #{hometown,jdbcType=VARCHAR},
+      id_card_number = #{idCardNumber,jdbcType=VARCHAR},
+      telephone = #{telephone,jdbcType=VARCHAR},
+      verify_identity = #{verifyIdentity,jdbcType=INTEGER},
+      id_card_front = #{idCardFront,jdbcType=VARCHAR},
+      id_card_back = #{idCardBack,jdbcType=VARCHAR},
+      certificate = #{certificate,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+  <select id="selectByUserId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from xinyuan_verify_material
+    where user_id = #{userId,jdbcType=INTEGER}
+  </select>
+
+  <select id="auditInfo" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"/>
+    from xinyuan_verify_material
+    where verify_identity = #{identity,jdbcType=INTEGER}
+  </select>
+
+  <delete id="deleteByUserId" parameterType="java.lang.Integer">
+    delete from xinyuan_verify_material
+    where user_id = #{userId,jdbcType=INTEGER}
+  </delete>
+
+
+</mapper>

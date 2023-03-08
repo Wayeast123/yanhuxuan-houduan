@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xinYuan.model.dao.ResumeSendMapper">
+  <resultMap id="BaseResultMap" type="com.xinYuan.model.pojo.ResumeSend">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="send_id" jdbcType="INTEGER" property="sendId" />
+    <result column="send_name" jdbcType="VARCHAR" property="sendName" />
+    <result column="send_school" jdbcType="VARCHAR" property="sendSchool" />
+    <result column="send_major" jdbcType="VARCHAR" property="sendMajor" />
+    <result column="send_telephone" jdbcType="VARCHAR" property="sendTelephone" />
+    <result column="send_content" jdbcType="VARCHAR" property="sendContent" />
+    <result column="receive_id" jdbcType="INTEGER" property="receiveId" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, send_id, send_name, send_school, send_major, send_telephone, send_content, receive_id, 
+    `status`, create_time, update_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from xinyuan_resume_send
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from xinyuan_resume_send
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.xinYuan.model.pojo.ResumeSend">
+    insert into xinyuan_resume_send (id, send_id, send_name, 
+      send_school, send_major, send_telephone, 
+      send_content, receive_id, `status`, 
+      create_time, update_time)
+    values (#{id,jdbcType=INTEGER}, #{sendId,jdbcType=INTEGER}, #{sendName,jdbcType=VARCHAR}, 
+      #{sendSchool,jdbcType=VARCHAR}, #{sendMajor,jdbcType=VARCHAR}, #{sendTelephone,jdbcType=VARCHAR}, 
+      #{sendContent,jdbcType=VARCHAR}, #{receiveId,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xinYuan.model.pojo.ResumeSend">
+    insert into xinyuan_resume_send
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="sendId != null">
+        send_id,
+      </if>
+      <if test="sendName != null">
+        send_name,
+      </if>
+      <if test="sendSchool != null">
+        send_school,
+      </if>
+      <if test="sendMajor != null">
+        send_major,
+      </if>
+      <if test="sendTelephone != null">
+        send_telephone,
+      </if>
+      <if test="sendContent != null">
+        send_content,
+      </if>
+      <if test="receiveId != null">
+        receive_id,
+      </if>
+      <if test="status != null">
+        `status`,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="sendId != null">
+        #{sendId,jdbcType=INTEGER},
+      </if>
+      <if test="sendName != null">
+        #{sendName,jdbcType=VARCHAR},
+      </if>
+      <if test="sendSchool != null">
+        #{sendSchool,jdbcType=VARCHAR},
+      </if>
+      <if test="sendMajor != null">
+        #{sendMajor,jdbcType=VARCHAR},
+      </if>
+      <if test="sendTelephone != null">
+        #{sendTelephone,jdbcType=VARCHAR},
+      </if>
+      <if test="sendContent != null">
+        #{sendContent,jdbcType=VARCHAR},
+      </if>
+      <if test="receiveId != null">
+        #{receiveId,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xinYuan.model.pojo.ResumeSend">
+    update xinyuan_resume_send
+    <set>
+      <if test="sendId != null">
+        send_id = #{sendId,jdbcType=INTEGER},
+      </if>
+      <if test="sendName != null">
+        send_name = #{sendName,jdbcType=VARCHAR},
+      </if>
+      <if test="sendSchool != null">
+        send_school = #{sendSchool,jdbcType=VARCHAR},
+      </if>
+      <if test="sendMajor != null">
+        send_major = #{sendMajor,jdbcType=VARCHAR},
+      </if>
+      <if test="sendTelephone != null">
+        send_telephone = #{sendTelephone,jdbcType=VARCHAR},
+      </if>
+      <if test="sendContent != null">
+        send_content = #{sendContent,jdbcType=VARCHAR},
+      </if>
+      <if test="receiveId != null">
+        receive_id = #{receiveId,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        `status` = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xinYuan.model.pojo.ResumeSend">
+    update xinyuan_resume_send
+    set send_id = #{sendId,jdbcType=INTEGER},
+      send_name = #{sendName,jdbcType=VARCHAR},
+      send_school = #{sendSchool,jdbcType=VARCHAR},
+      send_major = #{sendMajor,jdbcType=VARCHAR},
+      send_telephone = #{sendTelephone,jdbcType=VARCHAR},
+      send_content = #{sendContent,jdbcType=VARCHAR},
+      receive_id = #{receiveId,jdbcType=INTEGER},
+      `status` = #{status,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+  <select id="selectByUserIdAndObjectId" resultType="com.xinYuan.model.pojo.ResumeSend" parameterType="map">
+    select
+    <include refid="Base_Column_List" />
+    from xinyuan_resume_send
+    where send_id = #{sendId} and receive_id = #{receiveId}
+  </select>
+
+  <select id="selectByReceiveIdAndStatus" parameterType="map" resultType="com.xinYuan.model.vo.ResumeSendVO">
+    select
+      r.id as id,
+      r.send_id as sendId,
+      r.send_name as sendName,
+      r.send_school as sendSchool,
+      r.send_major as sendMajor,
+      r.send_telephone as sendTelephone,
+      r.send_content as sendContent,
+      r.receive_id as receiveId,
+      r.status as status,
+      r.create_time as createTime
+    from xinyuan_resume_send r
+    where receive_id = #{receiveId,jdbcType=INTEGER}
+      and status = #{status,jdbcType=VARCHAR}
+  </select>
+
+  <select id="selectBySendIdAndStatus" parameterType="map" resultType="com.xinYuan.model.vo.ResumeSendVO">
+    select
+      r.id as id,
+      r.send_id as sendId,
+      r.send_name as sendName,
+      r.send_school as sendSchool,
+      r.send_major as sendMajor,
+      r.send_telephone as sendTelephone,
+      r.send_content as sendContent,
+      r.receive_id as receiveId,
+      r.status as status,
+      r.create_time as createTime
+    from xinyuan_resume_send r
+    where send_id = #{sendId,jdbcType=INTEGER}
+      and status = #{status,jdbcType=VARCHAR}
+  </select>
+</mapper>

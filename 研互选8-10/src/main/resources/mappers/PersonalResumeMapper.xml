@@ -1,0 +1,495 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xinYuan.model.dao.PersonalResumeMapper">
+  <resultMap id="BaseResultMap" type="com.xinYuan.model.pojo.PersonalResume">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="user_name" jdbcType="VARCHAR" property="userName" />
+    <result column="school_name" jdbcType="VARCHAR" property="schoolName" />
+    <result column="major_name" jdbcType="VARCHAR" property="majorName" />
+    <result column="telephone" jdbcType="VARCHAR" property="telephone" />
+    <result column="content" jdbcType="VARCHAR" property="content" />
+    <result column="target_school" jdbcType="VARCHAR" property="targetSchool" />
+    <result column="identity" jdbcType="INTEGER" property="identity" />
+    <result column="fuzzy_search" jdbcType="VARCHAR" property="fuzzySearch" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="target_major" jdbcType="VARCHAR" property="targetMajor" />
+    <result column="score" jdbcType="INTEGER" property="score" />
+    <result column="test_score" jdbcType="INTEGER" property="testScore" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, user_id, user_name, school_name, major_name, telephone, content, target_school,
+    `identity`, fuzzy_search, create_time, update_time, target_major, score, test_score
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from xinyuan_personal_resume
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from xinyuan_personal_resume
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.xinYuan.model.pojo.PersonalResume">
+    insert into xinyuan_personal_resume (id, user_id, user_name,
+      school_name, major_name, telephone,
+      content, target_school, `identity`,
+      fuzzy_search, create_time, update_time,
+      target_major)
+    values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{userName,jdbcType=VARCHAR},
+      #{schoolName,jdbcType=VARCHAR}, #{majorName,jdbcType=VARCHAR}, #{telephone,jdbcType=VARCHAR},
+      #{content,jdbcType=VARCHAR}, #{targetSchool,jdbcType=VARCHAR}, #{identity,jdbcType=INTEGER},
+      #{fuzzySearch,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP},
+      #{targetMajor,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xinYuan.model.pojo.PersonalResume">
+    insert into xinyuan_personal_resume
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="userName != null">
+        user_name,
+      </if>
+      <if test="schoolName != null">
+        school_name,
+      </if>
+      <if test="majorName != null">
+        major_name,
+      </if>
+      <if test="telephone != null">
+        telephone,
+      </if>
+      <if test="content != null">
+        content,
+      </if>
+      <if test="targetSchool != null">
+        target_school,
+      </if>
+      <if test="identity != null">
+        `identity`,
+      </if>
+      <if test="fuzzySearch != null">
+        fuzzy_search,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="targetMajor != null">
+        target_major,
+      </if>
+      <if test="testScore != null">
+        test_score,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="userName != null">
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="schoolName != null">
+        #{schoolName,jdbcType=VARCHAR},
+      </if>
+      <if test="majorName != null">
+        #{majorName,jdbcType=VARCHAR},
+      </if>
+      <if test="telephone != null">
+        #{telephone,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null">
+        #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="targetSchool != null">
+        #{targetSchool,jdbcType=VARCHAR},
+      </if>
+      <if test="identity != null">
+        #{identity,jdbcType=INTEGER},
+      </if>
+      <if test="fuzzySearch != null">
+        #{fuzzySearch,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="targetMajor != null">
+        #{targetMajor,jdbcType=VARCHAR},
+      </if>
+      <if test="testScore != null">
+        #{testScore,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xinYuan.model.pojo.PersonalResume">
+    update xinyuan_personal_resume
+    <set>
+      <if test="userName != null ">
+        user_name = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="schoolName != null">
+        school_name = #{schoolName,jdbcType=VARCHAR},
+      </if>
+      <if test="majorName != null">
+        major_name = #{majorName,jdbcType=VARCHAR},
+      </if>
+      <if test="telephone != null">
+        telephone = #{telephone,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null">
+        content = #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="targetSchool != null">
+        target_school = #{targetSchool,jdbcType=VARCHAR},
+      </if>
+      <if test="identity != null">
+        `identity` = #{identity,jdbcType=INTEGER},
+      </if>
+      <if test="fuzzySearch != null">
+        fuzzy_search = #{fuzzySearch,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="targetMajor != null">
+        target_major = #{targetMajor,jdbcType=VARCHAR},
+      </if>
+      <if test="score != null">
+        score = #{score,jdbcType=INTEGER},
+      </if>
+      <if test="testScore != null">
+        test_score = #{testScore,jdbcType=INTEGER},
+      </if>
+    </set>
+    where user_id = #{userId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xinYuan.model.pojo.PersonalResume">
+    update xinyuan_personal_resume
+    set user_id = #{userId,jdbcType=INTEGER},
+      user_name = #{userName,jdbcType=VARCHAR},
+      school_name = #{schoolName,jdbcType=VARCHAR},
+      major_name = #{majorName,jdbcType=VARCHAR},
+      telephone = #{telephone,jdbcType=VARCHAR},
+      content = #{content,jdbcType=VARCHAR},
+      target_school = #{targetSchool,jdbcType=VARCHAR},
+      `identity` = #{identity,jdbcType=INTEGER},
+      fuzzy_search = #{fuzzySearch,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      target_major = #{targetMajor,jdbcType=VARCHAR},
+      test_score = #{testScore,jdbcType=INTEGER},
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+  <select id="selectByUserId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from xinyuan_personal_resume
+    where user_id = #{userId,jdbcType=INTEGER}
+  </select>
+
+  <select id="selectByAll" resultType="com.xinYuan.model.vo.PersonalResumeVO">
+    select
+      r.id as id,
+      r.user_id as userId,
+      r.user_name as userName,
+      r.school_name as schoolName,
+      r.major_name as majorName,
+      r.telephone as telephone,
+      r.content as content,
+      r.identity as identity,
+      r.score as score,
+      r.create_time as createTime,
+      r.test_score as testScore
+    from xinyuan_personal_resume r
+  </select>
+
+  <select id="selectStudent" parameterType="map" resultType="com.xinYuan.model.vo.PersonalResumeVO">
+    select
+      r.id as id,
+      r.user_id as userId,
+      r.user_name as userName,
+      r.school_name as schoolName,
+      r.major_name as majorName,
+      r.telephone as telephone,
+      r.content as content,
+      r.identity as identity,
+      r.score as score,
+      r.create_time as createTime,
+      r.test_score as testScore
+    from xinyuan_personal_resume r
+    where `identity` = #{identity,jdbcType=INTEGER}
+      and target_school = #{targetSchool,jdbcType=VARCHAR}
+  </select>
+
+  <select id="selectTutor" parameterType="map" resultType="com.xinYuan.model.vo.PersonalResumeVO">
+    select
+      r.id as id,
+      r.user_id as userId,
+      r.user_name as userName,
+      r.school_name as schoolName,
+      r.major_name as majorName,
+      r.telephone as telephone,
+      r.content as content,
+      r.identity as identity,
+      r.score as score,
+      r.create_time as createTime,
+      r.test_score as testScore
+    from xinyuan_personal_resume r
+    where `identity` = #{identity,jdbcType=INTEGER}
+      and school_name = #{schoolName,jdbcType=VARCHAR}
+  </select>
+
+  <select id="selectBySchoolName" parameterType="map" resultType="com.xinYuan.model.vo.PersonalResumeVO">
+    select
+      r.id as id,
+      r.user_id as userId,
+      r.user_name as userName,
+      r.school_name as schoolName,
+      r.major_name as majorName,
+      r.telephone as telephone,
+      r.content as content,
+      r.identity as identity,
+      r.score as score,
+      r.create_time as createTime,
+      r.test_score as testScore
+    from xinyuan_personal_resume r
+    where school_name = #{schoolName,jdbcType=VARCHAR}
+      and `identity` = #{identity,jdbcType=INTEGER}
+  </select>
+
+  <select id="selectByMajorName" parameterType="map" resultType="com.xinYuan.model.vo.PersonalResumeVO">
+    select
+      r.id as id,
+      r.user_id as userId,
+      r.user_name as userName,
+      r.school_name as schoolName,
+      r.major_name as majorName,
+      r.telephone as telephone,
+      r.content as content,
+      r.identity as identity,
+      r.score as score,
+      r.create_time as createTime,
+      r.test_score as testScore
+    from xinyuan_personal_resume r
+    where major_name = #{majorName,jdbcType=VARCHAR}
+      and `identity` = #{identity,jdbcType=INTEGER}
+  </select>
+
+  <select id="selectBySchoolNameAndMajorName" parameterType="map" resultType="com.xinYuan.model.vo.PersonalResumeVO">
+    select
+      r.id as id,
+      r.user_id as userId,
+      r.user_name as userName,
+      r.school_name as schoolName,
+      r.major_name as majorName,
+      r.telephone as telephone,
+      r.content as content,
+      r.identity as identity,
+      r.score as score,
+      r.create_time as createTime,
+      r.test_score as testScore
+    from xinyuan_personal_resume r
+    where school_name = #{schoolName,jdbcType=VARCHAR}
+      and major_name = #{majorName,jdbcType=VARCHAR}
+      and `identity` = #{identity,jdbcType=INTEGER}
+  </select>
+
+  <select id="selectBySchoolNameLogout" parameterType="java.lang.String" resultType="com.xinYuan.model.vo.PersonalResumeVO">
+    select
+      r.id as id,
+      r.user_id as userId,
+      r.user_name as userName,
+      r.school_name as schoolName,
+      r.major_name as majorName,
+      r.telephone as telephone,
+      r.content as content,
+      r.identity as identity,
+      r.score as score,
+      r.create_time as createTime,
+      r.test_score as testScore
+    from xinyuan_personal_resume r
+    where school_name = #{schoolName,jdbcType=VARCHAR}
+  </select>
+
+  <select id="selectByMajorNameLogout" parameterType="java.lang.String" resultType="com.xinYuan.model.vo.PersonalResumeVO">
+    select
+      r.id as id,
+      r.user_id as userId,
+      r.user_name as userName,
+      r.school_name as schoolName,
+      r.major_name as majorName,
+      r.telephone as telephone,
+      r.content as content,
+      r.identity as identity,
+      r.score as score,
+      r.create_time as createTime,
+      r.test_score as testScore
+    from xinyuan_personal_resume r
+    where major_name = #{majorName,jdbcType=VARCHAR}
+  </select>
+
+  <select id="selectBySchoolNameAndMajorNameLogout" parameterType="map" resultType="com.xinYuan.model.vo.PersonalResumeVO">
+    select
+      r.id as id,
+      r.user_id as userId,
+      r.user_name as userName,
+      r.school_name as schoolName,
+      r.major_name as majorName,
+      r.telephone as telephone,
+      r.content as content,
+      r.identity as identity,
+      r.score as score,
+      r.create_time as createTime,
+      r.test_score as testScore
+    from xinyuan_personal_resume r
+    where school_name = #{schoolName,jdbcType=VARCHAR}
+      and major_name = #{majorName,jdbcType=VARCHAR}
+  </select>
+
+  <select id="selectByTargetSchool" parameterType="map" resultType="com.xinYuan.model.vo.PersonalResumeVO">
+    select
+      r.id as id,
+      r.user_id as userId,
+      r.user_name as userName,
+      r.school_name as schoolName,
+      r.major_name as majorName,
+      r.telephone as telephone,
+      r.content as content,
+      r.identity as identity,
+      r.score as score,
+      r.create_time as createTime,
+      r.test_score as testScore
+    from xinyuan_personal_resume r
+    where target_school = #{targetSchool,jdbcType=VARCHAR}
+      and `identity` = #{identity,jdbcType=INTEGER}
+  </select>
+
+  <select id="selectByTargetMajor" parameterType="map" resultType="com.xinYuan.model.vo.PersonalResumeVO">
+    select
+      r.id as id,
+      r.user_id as userId,
+      r.user_name as userName,
+      r.school_name as schoolName,
+      r.major_name as majorName,
+      r.telephone as telephone,
+      r.content as content,
+      r.identity as identity,
+      r.score as score,
+      r.create_time as createTime,
+      r.test_score as testScore
+    from xinyuan_personal_resume r
+    where target_major = #{targetMajor,jdbcType=VARCHAR}
+      and `identity` = #{identity,jdbcType=INTEGER}
+  </select>
+
+  <select id="selectByTargetSchoolAndTargetMajor" parameterType="map" resultType="com.xinYuan.model.vo.PersonalResumeVO">
+    select
+      r.id as id,
+      r.user_id as userId,
+      r.user_name as userName,
+      r.school_name as schoolName,
+      r.major_name as majorName,
+      r.telephone as telephone,
+      r.content as content,
+      r.identity as identity,
+      r.score as score,
+      r.create_time as createTime,
+      r.test_score as testScore
+    from xinyuan_personal_resume r
+    where target_school = #{targetSchool,jdbcType=VARCHAR}
+      and target_major = #{targetMajor,jdbcType=VARCHAR}
+      and `identity` = #{identity,jdbcType=INTEGER}
+  </select>
+
+  <select id="selectByAllTutor" resultType="com.xinYuan.model.vo.PersonalResumeVO">
+    select
+      r.id as id,
+      r.user_id as userId,
+      r.user_name as userName,
+      r.school_name as schoolName,
+      r.major_name as majorName,
+      r.telephone as telephone,
+      r.content as content,
+      r.identity as identity,
+      r.score as score,
+      r.create_time as createTime,
+      r.test_score as testScore
+    from xinyuan_personal_resume r
+    where `identity` = #{identity,jdbcType=INTEGER}
+  </select>
+
+  <select id="FuzzySearchByAllTutor" resultType="com.xinYuan.model.vo.PersonalResumeVO">
+    select
+      r.id as id,
+      r.user_id as userId,
+      r.user_name as userName,
+      r.school_name as schoolName,
+      r.major_name as majorName,
+      r.telephone as telephone,
+      r.content as content,
+      r.identity as identity,
+      r.score as score,
+      r.create_time as createTime,
+      r.test_score as testScore
+    from xinyuan_personal_resume r
+    where `identity` = #{identity,jdbcType=INTEGER}
+      and fuzzy_search like "%"#{keyWord}"%"
+  </select>
+
+  <select id="FuzzySearchStudent" parameterType="map" resultType="com.xinYuan.model.vo.PersonalResumeVO">
+    select
+      r.id as id,
+      r.user_id as userId,
+      r.user_name as userName,
+      r.school_name as schoolName,
+      r.major_name as majorName,
+      r.telephone as telephone,
+      r.content as content,
+      r.identity as identity,
+      r.score as score,
+      r.create_time as createTime,
+      r.test_score as testScore
+    from xinyuan_personal_resume r
+    where `identity` = #{identity,jdbcType=INTEGER}
+      and target_school = #{targetSchool,jdbcType=VARCHAR}
+      and fuzzy_search like "%"#{keyWord}"%"
+  </select>
+
+  <select id="FuzzySearchTutor" parameterType="map" resultType="com.xinYuan.model.vo.PersonalResumeVO">
+    select
+      r.id as id,
+      r.user_id as userId,
+      r.user_name as userName,
+      r.school_name as schoolName,
+      r.major_name as majorName,
+      r.telephone as telephone,
+      r.content as content,
+      r.identity as identity,
+      r.score as score,
+      r.create_time as createTime,
+      r.test_score as testScore
+    from xinyuan_personal_resume r
+    where `identity` = #{identity,jdbcType=INTEGER}
+      and school_name = #{schoolName,jdbcType=VARCHAR}
+      and fuzzy_search like "%"#{keyWord}"%"
+  </select>
+
+</mapper>

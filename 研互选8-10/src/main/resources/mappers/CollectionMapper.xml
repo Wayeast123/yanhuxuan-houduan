@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xinYuan.model.dao.CollectionMapper">
+  <resultMap id="BaseResultMap" type="com.xinYuan.model.pojo.Collection">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="collector_id" jdbcType="INTEGER" property="collectorId" />
+    <result column="be_collected_id" jdbcType="INTEGER" property="beCollectedId" />
+    <result column="user_name" jdbcType="VARCHAR" property="userName" />
+    <result column="school_name" jdbcType="VARCHAR" property="schoolName" />
+    <result column="major_name" jdbcType="VARCHAR" property="majorName" />
+    <result column="telephone" jdbcType="VARCHAR" property="telephone" />
+    <result column="content" jdbcType="VARCHAR" property="content" />
+    <result column="target_school" jdbcType="VARCHAR" property="targetSchool" />
+    <result column="target_major" jdbcType="VARCHAR" property="targetMajor" />
+    <result column="score" jdbcType="INTEGER" property="score" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, collector_id, be_collected_id, user_name, school_name, major_name, telephone, 
+    content, target_school, target_major, score, create_time, update_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from xinyuan_collection
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from xinyuan_collection
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.xinYuan.model.pojo.Collection">
+    insert into xinyuan_collection (id, collector_id, be_collected_id, 
+      user_name, school_name, major_name, 
+      telephone, content, target_school, 
+      create_time, update_time)
+    values (#{id,jdbcType=INTEGER}, #{collectorId,jdbcType=INTEGER}, #{beCollectedId,jdbcType=INTEGER}, 
+      #{userName,jdbcType=VARCHAR}, #{schoolName,jdbcType=VARCHAR}, #{majorName,jdbcType=VARCHAR}, 
+      #{telephone,jdbcType=VARCHAR}, #{content,jdbcType=VARCHAR}, #{targetSchool,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xinYuan.model.pojo.Collection">
+    insert into xinyuan_collection
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="collectorId != null">
+        collector_id,
+      </if>
+      <if test="beCollectedId != null">
+        be_collected_id,
+      </if>
+      <if test="userName != null">
+        user_name,
+      </if>
+      <if test="schoolName != null">
+        school_name,
+      </if>
+      <if test="majorName != null">
+        major_name,
+      </if>
+      <if test="telephone != null">
+        telephone,
+      </if>
+      <if test="content != null">
+        content,
+      </if>
+      <if test="targetSchool != null">
+        target_school,
+      </if>
+      <if test="targetMajor != null">
+        target_major,
+      </if>
+      <if test="score != null">
+        score,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="collectorId != null">
+        #{collectorId,jdbcType=INTEGER},
+      </if>
+      <if test="beCollectedId != null">
+        #{beCollectedId,jdbcType=INTEGER},
+      </if>
+      <if test="userName != null">
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="schoolName != null">
+        #{schoolName,jdbcType=VARCHAR},
+      </if>
+      <if test="majorName != null">
+        #{majorName,jdbcType=VARCHAR},
+      </if>
+      <if test="telephone != null">
+        #{telephone,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null">
+        #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="targetSchool != null">
+        #{targetSchool,jdbcType=VARCHAR},
+      </if>
+      <if test="targetMajor != null">
+        #{targetMajor,jdbcType=VARCHAR},
+      </if>
+      <if test="score != null">
+        #{score,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xinYuan.model.pojo.Collection">
+    update xinyuan_collection
+    <set>
+      <if test="collectorId != null">
+        collector_id = #{collectorId,jdbcType=INTEGER},
+      </if>
+      <if test="beCollectedId != null">
+        be_collected_id = #{beCollectedId,jdbcType=INTEGER},
+      </if>
+      <if test="userName != null">
+        user_name = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="schoolName != null">
+        school_name = #{schoolName,jdbcType=VARCHAR},
+      </if>
+      <if test="majorName != null">
+        major_name = #{majorName,jdbcType=VARCHAR},
+      </if>
+      <if test="telephone != null">
+        telephone = #{telephone,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null">
+        content = #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="targetSchool != null">
+        target_school = #{targetSchool,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xinYuan.model.pojo.Collection">
+    update xinyuan_collection
+    set collector_id = #{collectorId,jdbcType=INTEGER},
+      be_collected_id = #{beCollectedId,jdbcType=INTEGER},
+      user_name = #{userName,jdbcType=VARCHAR},
+      school_name = #{schoolName,jdbcType=VARCHAR},
+      major_name = #{majorName,jdbcType=VARCHAR},
+      telephone = #{telephone,jdbcType=VARCHAR},
+      content = #{content,jdbcType=VARCHAR},
+      target_school = #{targetSchool,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+  <select id="selectByAll" resultType="com.xinYuan.model.vo.CollectionVO">
+    select
+      r.id as id,
+      r.collector_id as collectorId,
+      r.be_collected_id as beCollectedId,
+      r.user_name as userName,
+      r.school_name as schoolName,
+      r.major_name as majorName,
+      r.telephone as telephone,
+      r.content as content,
+      r.target_school as targetSchool,
+      r.target_major as targetMajor,
+      r.score as score,
+      r.create_time as createTime
+    from xinyuan_collection r
+    where collector_id = #{collectorId,jdbcType=INTEGER}
+  </select>
+</mapper>
